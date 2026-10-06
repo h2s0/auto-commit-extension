@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "minimum_chrome_version": "116",
+  "name": "LeetCode GitHub Sync",
+  "version": "0.1.0",
+  "description": "Save accepted LeetCode solutions to your GitHub repository.",
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://api.github.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/index.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://leetcode.com/*"
+      ],
+      "js": [
+        "src/content/loader.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://leetcode.com/*"
+      ],
+      "js": [
+        "src/injected/network-bridge.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/content/*.js",
+        "src/shared/*.js"
+      ],
+      "matches": [
+        "https://leetcode.com/*"
+      ]
+    }
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Bb1wNwwUYs+XGN4E4SILYwwcvGlpJeTjPLJw8PkNqUSS2Fhoow9q2a0jEZkM9+udic3o3g/iE8xhSs6FUkdh/2hop27jHG4lFAaioI7ObihzbsLnwnaMJJgxSaE63Bx2TeJ4ZTc0yvQc+F3SFcpor4CcDf4KeYdRmlEL2mIU/P3Vizt9l5h431i9OiQ1XmDhY1i2syrmrN5wV+/AB7avYz4q6srGfsLe7RTSOq6T/+3qGue6o7s2xgu6bsOjxyyjTnFGwS1mCr+Xfgx5M5UxlxvM8556NTUDhn+yfiLzkji8GjMu0egDHqKzeytBcKKQtgPWCMvYAylCs5DOCT7wIDAQAB"
+}

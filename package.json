@@ -1,0 +1,17 @@
+{
+  "name": "leetcode-github-sync",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "verify:build": "node scripts/verify-build.mjs",
+    "oauth:info": "node scripts/oauth-info.mjs",
+    "auth:dev": "node --env-file=.env.oauth server/index.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

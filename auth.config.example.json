@@ -1,0 +1,4 @@
+{
+  "clientId": "YOUR_GITHUB_OAUTH_APP_CLIENT_ID",
+  "brokerUrl": "http://127.0.0.1:8787"
+}
